@@ -3,8 +3,10 @@ import { Header } from './container/Header';
 
 function App() {
   return (
-    <div>
-      <Header />
+    <div className='flex flex-col justify-center items-center gap-5 p-4'>
+      <div className='w-full'>
+        <Header />
+      </div>
       <HeroCard />
     </div>
   );
