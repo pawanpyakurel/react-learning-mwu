@@ -3,7 +3,7 @@ import { Header } from './container/Header';
 import { useGetWeather } from './hooks/useGetWeather';
 
 function App() {
-  const { weather } = useGetWeather();
+  const { weather, loading } = useGetWeather();
   console.log(weather, '---weather here');
 
   return (
@@ -14,6 +14,7 @@ function App() {
       <HeroCard
         temperature={weather?.temperature}
         wind={weather?.wind}
+        loading={loading}
       />
     </div>
   );

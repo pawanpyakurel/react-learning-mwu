@@ -3,9 +3,11 @@ import type { Weather } from '../types/apiResponseType';
 
 export const useGetWeather = () => {
   const [weather, setWeather] = useState<Weather | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const getWeather = async () => {
     try {
+      setLoading(true);
       const res = await fetch(
         `https://goweather.xyz/v2/weather/surkhet?unit=u`,
         {
@@ -17,6 +19,8 @@ export const useGetWeather = () => {
       setWeather(data);
     } catch (err) {
       console.log(err?.response);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -24,5 +28,5 @@ export const useGetWeather = () => {
     getWeather();
   }, []);
 
-  return { weather };
+  return { weather, loading };
 };
