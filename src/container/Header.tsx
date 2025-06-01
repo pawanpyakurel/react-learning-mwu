@@ -1,30 +1,31 @@
 import { useState } from 'react';
+import { Button } from '../components/Button';
 
 export const Header = () => {
-  const [selected, setSelected] = useState('');
+  const [selected, setSelected] = useState('Today');
 
   return (
     <div className='flex flex-row justify-between items-center'>
-      <button
-        className='text-white font-bold'
-        onClick={() => setSelected('today')}>
-        Today
-      </button>
-      <button
-        className='text-white'
-        onClick={() => setSelected('mylist')}>
-        My List
-      </button>
-      <button
-        className='text-white'
-        onClick={() => setSelected('news')}>
-        News
-      </button>
-      <button
-        className='text-white'
-        onClick={() => setSelected('profile')}>
-        Profile
-      </button>
+      <Button
+        selected={selected}
+        setSelected={setSelected}
+        label='Today'
+      />
+      <Button
+        selected={selected}
+        setSelected={setSelected}
+        label='List'
+      />
+      <Button
+        selected={selected}
+        setSelected={setSelected}
+        label='News'
+      />
+      <Button
+        selected={selected}
+        setSelected={setSelected}
+        label='Profile'
+      />
     </div>
   );
 };
