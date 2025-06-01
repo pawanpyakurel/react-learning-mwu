@@ -1,14 +1,13 @@
-import { Header } from "./container/header"
-
+import { HeroCard } from './components/HeroCard';
+import { Header } from './container/Header';
 
 function App() {
   return (
-    <div >
+    <div>
       <Header />
-      <h1 className="text-red-500" >Hello World</h1>
+      <HeroCard />
     </div>
-   
-  )
+  );
 }
 
-export default App
+export default App;
