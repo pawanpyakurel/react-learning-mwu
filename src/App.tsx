@@ -1,14 +1,15 @@
-import { Header } from "./container/header"
-
+import { Route, Routes } from 'react-router';
+import Home from './pages/Home';
 
 function App() {
   return (
-    <div >
-      <Header />
-      <h1 className="text-red-500" >Hello World</h1>
-    </div>
-   
-  )
+    <Routes>
+      <Route
+        path='/'
+        element={<Home />}
+      />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
