@@ -1,4 +1,5 @@
 import { HeroCard } from '../components/HeroCard';
+import { Search } from '../components/Search';
 import { Header } from '../container/Header';
 import { useGetWeather } from '../hooks/useGetWeather';
 
@@ -11,6 +12,7 @@ function Home() {
       <div className='w-full'>
         <Header />
       </div>
+      <Search />
       <HeroCard
         temperature={weather?.temperature}
         wind={weather?.wind}
