@@ -9,8 +9,11 @@ export const useGetWeather = () => {
 
   const [searchParams, _setSearchParams] = useSearchParams();
   const searchLocation = searchParams.get('userLocation');
+  const unit = searchParams.get('unit');
 
   const debouncedSearch = useDebounce(searchLocation ?? '');
+
+  const debouncedUnit = useDebounce(unit ?? '');
 
   const getWeather = async () => {
     try {
@@ -18,7 +21,7 @@ export const useGetWeather = () => {
       const res = await fetch(
         `https://goweather.xyz/v2/weather/${
           !!debouncedSearch ? debouncedSearch : 'surkhet'
-        }?unit=u`,
+        }?unit=${debouncedUnit}`,
         {
           method: 'GET',
         }
@@ -38,7 +41,7 @@ export const useGetWeather = () => {
 
   useEffect(() => {
     getWeather();
-  }, [debouncedSearch]);
+  }, [debouncedSearch, debouncedUnit]);
 
   return { weather, loading };
 };
