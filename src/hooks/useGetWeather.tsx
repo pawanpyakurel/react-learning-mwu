@@ -25,7 +25,10 @@ export const useGetWeather = () => {
       );
 
       const data: Weather = await res.json();
-      setWeather(data);
+      setWeather({
+        ...data,
+        location: !!debouncedSearch ? debouncedSearch : 'surkhet',
+      });
     } catch (err) {
       console.log(err?.response);
     } finally {

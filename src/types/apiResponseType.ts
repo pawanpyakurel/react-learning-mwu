@@ -9,4 +9,5 @@ export type Weather = {
   wind: string;
   description: string;
   forecast: Forecast[];
+  location?:string
 };

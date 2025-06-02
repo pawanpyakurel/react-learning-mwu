@@ -17,6 +17,7 @@ function Home() {
         temperature={weather?.temperature}
         wind={weather?.wind}
         loading={loading}
+        location={weather?.location}
       />
     </div>
   );
