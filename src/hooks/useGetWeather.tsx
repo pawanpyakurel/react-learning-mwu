@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import type { Weather } from '../types/apiResponseType';
 import { useSearchParams } from 'react-router';
+import { useDebounce } from './useDebounce';
 
 export const useGetWeather = () => {
   const [weather, setWeather] = useState<Weather | null>(null);
@@ -9,14 +10,14 @@ export const useGetWeather = () => {
   const [searchParams, _setSearchParams] = useSearchParams();
   const searchLocation = searchParams.get('userLocation');
 
-  console.log(searchLocation, 'search location');
+  const debouncedSearch = useDebounce(searchLocation ?? '');
 
   const getWeather = async () => {
     try {
       setLoading(true);
       const res = await fetch(
         `https://goweather.xyz/v2/weather/${
-          !!searchLocation ? searchLocation : 'surkhet'
+          !!debouncedSearch ? debouncedSearch : 'surkhet'
         }?unit=u`,
         {
           method: 'GET',
@@ -34,7 +35,7 @@ export const useGetWeather = () => {
 
   useEffect(() => {
     getWeather();
-  }, [searchLocation]);
+  }, [debouncedSearch]);
 
   return { weather, loading };
 };
