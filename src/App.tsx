@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router';
 import Home from './pages/Home';
+import List from './pages/List';
 
 function App() {
   return (
@@ -7,6 +8,10 @@ function App() {
       <Route
         path='/'
         element={<Home />}
+      />
+      <Route
+        path='/list'
+        element={<List />}
       />
     </Routes>
   );
