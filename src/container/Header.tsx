@@ -1,8 +1,16 @@
 import { useState } from 'react';
 import { Button } from '../components/Button';
+import { useNavigate } from 'react-router';
 
 export const Header = () => {
   const [selected, setSelected] = useState('Today');
+
+  const navigation = useNavigate();
+
+  const onListClick = (type: string) => {
+    navigation('/list');
+    setSelected(type);
+  };
 
   return (
     <div className='flex flex-row justify-between items-center'>
@@ -13,7 +21,7 @@ export const Header = () => {
       />
       <Button
         selected={selected}
-        setSelected={setSelected}
+        setSelected={onListClick}
         label='List'
       />
       <Button

@@ -2,7 +2,9 @@ import type React from 'react';
 
 type ButtonProps = {
   selected: string;
-  setSelected: React.Dispatch<React.SetStateAction<string>>;
+  setSelected: (
+    text: string
+  ) => void | React.Dispatch<React.SetStateAction<string>>;
   label: string;
 };
 
